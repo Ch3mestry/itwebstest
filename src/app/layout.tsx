@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
-import { PostForm } from "@/features/post-form/PostForm";
 
 export const metadata: Metadata = {
   title: "ItWebsTest",
@@ -15,7 +14,6 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className="p-4">
-        <PostForm />
         {children}
       </body>
     </html>
