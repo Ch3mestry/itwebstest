@@ -1,17 +1,19 @@
-import { getPosts } from "@/entities/post/api";
-import { Post } from "@/entities/post/model";
-import { PostForm } from "@/features/post-form/PostForm";
-
-import { PostList } from "@/widgets/postList";
+import { getPosts } from "@/entities/post";
+import { PostForm } from "@/features/PostForm";
+import { PostList } from "@/widgets/PostList/PostList";
 
 export default async function SsgPage() {
-  const posts: Post[] = await getPosts({ cache: "force-cache" });
+  const posts = await getPosts({ cache: "force-cache" });
+
+  if (!posts) {
+    return <div>Posts not found</div>;
+  }
 
   return (
-    <div>
+    <>
       <PostForm />
       <h2 className="text-xl font-bold mb-2">Posts (SSG)</h2>
       <PostList posts={posts} />
-    </div>
+    </>
   );
 }

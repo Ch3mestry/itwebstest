@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/shared/ui/card";
-import { Post } from "@/entities/post/model";
+import { Post } from "../model";
 
 interface PostCardProps {
   post: Post;

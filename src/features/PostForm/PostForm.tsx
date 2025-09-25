@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { Button } from "@/shared/ui/button";
 import {
@@ -26,7 +25,7 @@ export function PostForm() {
     if (file) formData.append("file", file);
 
     try {
-      const post = await createPostFormData(formData);
+      await createPostFormData(formData);
       setIsOpen(false);
       setText("");
       setFile(null);
@@ -45,7 +44,6 @@ export function PostForm() {
           <DialogTitle>Отправка данных</DialogTitle>
           <DialogDescription>Заполните форму и отправьте</DialogDescription>
         </DialogHeader>
-
         <form className="mt-4 flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"

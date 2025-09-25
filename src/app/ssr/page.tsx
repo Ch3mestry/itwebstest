@@ -1,23 +1,21 @@
-import { getPosts } from "@/entities/post/api";
-import { Post } from "@/entities/post/model";
-import { PostList } from "@/widgets/postList";
-import { PostForm } from "@/features/post-form/PostForm";
+import { PostList } from "@/widgets/PostList";
+import { PostForm } from "@/features/PostForm";
+import { getPosts } from "@/entities/post";
 
 export const dynamic = "force-dynamic";
 
 export default async function SsrPage() {
-  let posts: Post[] = [];
-  try {
-    posts = await getPosts();
-  } catch (err) {
-    console.error(err);
+  const posts = await getPosts();
+
+  if (!posts) {
+    return <div>Posts not found</div>;
   }
 
   return (
-    <div>
+    <>
       <PostForm />
       <h2 className="text-xl font-bold mb-2">Posts (SSR)</h2>
       <PostList posts={posts} />
-    </div>
+    </>
   );
 }

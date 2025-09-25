@@ -1,16 +1,19 @@
-import { getPosts } from "@/entities/post/api";
-import { Post } from "@/entities/post/model";
-import { PostList } from "@/widgets/postList";
-import { PostForm } from "@/features/post-form/PostForm";
+import { getPosts } from "@/entities/post";
+import { PostForm } from "@/features/PostForm";
+import { PostList } from "@/widgets/PostList/PostList";
 
 export default async function IsrPage() {
-  const posts: Post[] = await getPosts({ next: { revalidate: 60 } });
+  const posts = await getPosts({ next: { revalidate: 60 } });
+
+  if (!posts) {
+    return <div>Posts not found</div>;
+  }
 
   return (
-    <div>
+    <>
       <PostForm />
       <h2 className="text-xl font-bold mb-2">Posts (ISR)</h2>
       <PostList posts={posts} />
-    </div>
+    </>
   );
 }
