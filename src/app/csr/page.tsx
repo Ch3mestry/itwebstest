@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "@/entities/post/api";
 import { Post } from "@/entities/post/model";
-import { PostList } from "@/shared/ui/postList";
+import { PostList } from "@/widgets/postList";
 
 export default function CsrPage() {
   const [posts, setPosts] = useState<Post[]>([]);

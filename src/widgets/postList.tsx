@@ -1,4 +1,3 @@
-// src/entities/post/ui/PostList.tsx
 import { Post } from "@/entities/post/model";
 import { PostCard } from "@/entities/post/ui/Postcard";
 

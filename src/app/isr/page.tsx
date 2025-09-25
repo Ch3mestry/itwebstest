@@ -1,7 +1,6 @@
-// src/app/isr/page.tsx
 import { getPosts } from "@/entities/post/api";
 import { Post } from "@/entities/post/model";
-import { PostList } from "@/shared/ui/postList";
+import { PostList } from "@/widgets/postList";
 
 export default async function IsrPage() {
   const posts: Post[] = await getPosts({ next: { revalidate: 60 } });

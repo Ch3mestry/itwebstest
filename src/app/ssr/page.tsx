@@ -1,6 +1,6 @@
 import { getPosts } from "@/entities/post/api";
 import { Post } from "@/entities/post/model";
-import { PostList } from "@/shared/ui/postList";
+import { PostList } from "@/widgets/postList";
 
 export default async function SsrPage() {
   let posts: Post[] = [];
